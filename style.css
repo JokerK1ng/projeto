@@ -19,7 +19,7 @@
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(0, 0, 0, 0.1);
-  --switch-bg-url: url(./assents/sun.svg);
+  --switch-bg-url: url(./assents/Sun.svg);
 }
 body {
   background-image: var(--bg-url);
@@ -70,10 +70,14 @@ body {
   position: absolute;
   z-index: 1;
   transform: translateY(-50%);
+  animation: slide-out 0.3s;
 }
+#switch button :hover {
+  outline: 8px solid var(--highlight-color);
+}
+
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.4s forwards;
 }
 #switch span {
   display: block;
@@ -142,14 +146,28 @@ footer {
   padding: 24px;
 }
 
-@media (min-width: 700px){
-:root {
-  --bg-url: url(./assets/Background.jpg);
-}
-.light {
-  --bg-url: url(./assets/Background-light.jpg);
-}
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/Background.jpg);
+  }
+  .light {
+    --bg-url: url(./assets/Background-light.jpg);
+  }
 }
 
-
-
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
